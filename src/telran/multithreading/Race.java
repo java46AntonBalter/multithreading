@@ -31,7 +31,6 @@ public class Race extends Thread {
 			try {
 				i.join();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
