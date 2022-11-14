@@ -1,4 +1,4 @@
-package telran.multithreading;
+package telran.view;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
