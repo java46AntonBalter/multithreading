@@ -10,7 +10,11 @@ public class SynchronizedPrinting {
 
 	public static void main(String[] args) {
 		getArrayOfPrinters();
+		setNextPrinterAndStartThread();
+		printers[0].interrupt();
+	}
 
+	private static void setNextPrinterAndStartThread() {
 		IntStream.range(0, N_PRINTERS).forEach(i -> {
 			if (i < N_PRINTERS - 1) {
 				printers[i].setNextPrinter(printers[i + 1]);
@@ -19,8 +23,6 @@ public class SynchronizedPrinting {
 			}
 			printers[i].start();
 		});
-
-		printers[0].interrupt();
 	}
 
 	private static void getArrayOfPrinters() {
