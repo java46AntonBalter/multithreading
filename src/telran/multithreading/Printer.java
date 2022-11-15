@@ -1,7 +1,6 @@
 package telran.multithreading;
 
 public class Printer extends Thread {
-	private static final long TIMEOUT = 200000;
 	private String symbol;
 	private int reps;
 	private int repetitionTimes;
@@ -21,7 +20,7 @@ public class Printer extends Thread {
 	public void run() {
 		while(repetitionTimes > 0) {
 			try {
-				sleep(TIMEOUT);
+				sleep(1000);
 			} catch (InterruptedException e) {
 				System.out.println(symbol.repeat(reps));
 				nextPrinter.interrupt();
