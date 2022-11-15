@@ -6,9 +6,9 @@ public class Printer extends Thread {
 	private int repetitionTimes;
 	private Printer nextPrinter;
 	
-	public Printer(int symbol, int reps, int increment) {
+	public Printer(int symbol, int nSymbols, int increment) {
 		this.symbol = "" + symbol;
-		this.reps = reps/increment;
+		this.reps = nSymbols/increment;
 		this.repetitionTimes = increment;
 	}
 
