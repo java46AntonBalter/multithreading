@@ -1,31 +1,46 @@
 package telran.multithreading;
 
 public class Printer extends Thread {
-	private String symbol;
-	private int reps;
-	private int repetitionTimes;
-	private Printer nextPrinter;
-	
-	public Printer(int symbol, int nSymbols, int increment) {
-		this.symbol = "" + symbol;
-		this.reps = nSymbols/increment;
-		this.repetitionTimes = increment;
+	private static final long SLEEPING_TIME = 100;
+	int printerNumber;
+	Printer next;
+	private int inLine;
+	static int overall;
+	static int nPartitions;
+
+	public Printer(int printerNumber) {
+		this.printerNumber = printerNumber;
+		inLine = overall / nPartitions;
 	}
 
-	public void setNextPrinter(Printer nextPrinter) {
-		this.nextPrinter = nextPrinter;
+	public void setNext(Printer next) {
+		this.next = next;
+	}
+
+	public static void setOverall(int overall) {
+		Printer.overall = overall;
+	}
+
+	public static void setPartitions(int nPartitions) {
+		Printer.nPartitions = nPartitions;
+
 	}
 
 	@Override
 	public void run() {
-		while(repetitionTimes > 0) {
+		int count = 0;
+		String line = (" " + printerNumber).repeat(inLine);
+		while (count < nPartitions) {
 			try {
-				sleep(1000);
+				sleep(SLEEPING_TIME);
+
 			} catch (InterruptedException e) {
-				System.out.println(symbol.repeat(reps));
-				nextPrinter.interrupt();
-				--repetitionTimes;
+				System.out.println(line);
+				next.interrupt();
+				count++;
 			}
 		}
+
 	}
+
 }
