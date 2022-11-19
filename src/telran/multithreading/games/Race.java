@@ -1,22 +1,41 @@
 package telran.multithreading.games;
 
+import java.time.Instant;
+import java.util.ArrayList;
+
+class RaceStats {
+	private int racerNumber;
+	private Instant finishTime;
+	
+	public RaceStats(int racerNumber, Instant finishTime) {
+		this.racerNumber = racerNumber;
+		this.finishTime = finishTime;
+	}
+
+	public int getRacerNumber() {
+		return racerNumber;
+	}
+
+	public Instant getFinishTime() {
+		return finishTime;
+	}		
+}
+
 public class Race {
 	private int distance;
 	private int minSleep;
 	private int maxSleep;
-	private int winner = -1;
+	private static ArrayList <RaceStats> resultsTable = new ArrayList<>();
 	public Race(int distance, int minSleep, int maxSleep) {
 		this.distance = distance;
 		this.minSleep = minSleep;
 		this.maxSleep = maxSleep;
 	}
-	public int getWinner() {
-		return winner;
+	public ArrayList <RaceStats> getResultsTable() {
+		return resultsTable;
 	}
-	public void setWinner(int winner) {
-		if (this.winner == -1) {
-			this.winner = winner;
-		}
+	synchronized static void setResultsTable(int racerNumber, Instant finishTime) {
+		resultsTable.add(new RaceStats(racerNumber, finishTime));
 	}
 	public int getDistance() {
 		return distance;
