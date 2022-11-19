@@ -22,6 +22,6 @@ public void run() {
 		}
 		System.out.println(runnerId);
 	}
-	Race.setResultsTable(runnerId, Instant.now());
+	Race.setResultsToTable(runnerId, Instant.now());
 }
 }

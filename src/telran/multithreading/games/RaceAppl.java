@@ -45,7 +45,7 @@ public class RaceAppl {
 		System.out.println("*".repeat(header.length()));
 		System.out.println(header);
 		System.out.println("*".repeat(header.length()));
-		IntStream.range(1, (results.size() + 1))
+		IntStream.range(1, results.size() + 1)
 				.forEach(i -> {
 					int racerNumber = results.get(i - 1).getRacerNumber();
 					System.out.print(i);

@@ -34,7 +34,7 @@ public class Race {
 	public ArrayList <RaceStats> getResultsTable() {
 		return resultsTable;
 	}
-	synchronized static void setResultsTable(int racerNumber, Instant finishTime) {
+	synchronized static void setResultsToTable(int racerNumber, Instant finishTime) {
 		resultsTable.add(new RaceStats(racerNumber, finishTime));
 	}
 	public int getDistance() {
