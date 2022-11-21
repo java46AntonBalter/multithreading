@@ -1,41 +1,36 @@
 package telran.multithreading.games;
 
 import java.time.Instant;
-import java.util.ArrayList;
-
-class RaceStats {
-	private int racerNumber;
-	private Instant finishTime;
-	
-	public RaceStats(int racerNumber, Instant finishTime) {
-		this.racerNumber = racerNumber;
-		this.finishTime = finishTime;
-	}
-
-	public int getRacerNumber() {
-		return racerNumber;
-	}
-
-	public Instant getFinishTime() {
-		return finishTime;
-	}		
-}
+import java.util.List;
 
 public class Race {
 	private int distance;
 	private int minSleep;
 	private int maxSleep;
-	private static ArrayList <RaceStats> resultsTable = new ArrayList<>();
-	public Race(int distance, int minSleep, int maxSleep) {
+	private int winner = -1;
+	private List<Runner> resultsTable;
+	private Instant startTime;
+	
+	public List<Runner> getResultsTable() {
+		return resultsTable;
+	}
+	public Instant getStartTime() {
+		return startTime;
+	}
+	public Race(int distance, int minSleep, int maxSleep, List<Runner> resultsTable, Instant startTime) {
 		this.distance = distance;
 		this.minSleep = minSleep;
 		this.maxSleep = maxSleep;
+		this.resultsTable = resultsTable;
+		this.startTime = startTime;
 	}
-	public ArrayList <RaceStats> getResultsTable() {
-		return resultsTable;
+	public int getWinner() {
+		return winner;
 	}
-	synchronized static void setResultsToTable(int racerNumber, Instant finishTime) {
-		resultsTable.add(new RaceStats(racerNumber, finishTime));
+	public void setWinner(int winner) {
+		if (this.winner == -1) {
+			this.winner = winner;
+		}
 	}
 	public int getDistance() {
 		return distance;
@@ -46,5 +41,4 @@ public class Race {
 	public int getMaxSleep() {
 		return maxSleep;
 	}
-	
 }
