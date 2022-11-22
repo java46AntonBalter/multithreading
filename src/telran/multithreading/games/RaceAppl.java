@@ -31,6 +31,7 @@ public class RaceAppl {
 		int distance = io.readInt("Enter distance", "Wrong Distance",MIN_DISTANCE, MAX_DISTANCE);
 		Race race = new Race(distance, MIN_SLEEP, MAX_SLEEP);
 		Runner[] runners = new Runner[nThreads];
+		race.resetWinner();
 		startRunners(runners, race);
 		joinRunners(runners);
 		displayWinner(race);
