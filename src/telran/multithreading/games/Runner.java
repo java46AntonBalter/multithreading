@@ -33,7 +33,7 @@ public class Runner extends Thread {
 		} finally {
 			race.lock.unlock();
 		}
-	}
+	} 
 	private void finishRace() {
 		race.getResultsTable().add(this);
 
