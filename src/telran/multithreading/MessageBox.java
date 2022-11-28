@@ -2,10 +2,14 @@ package telran.multithreading;
 
 public class MessageBox {
 	private String message;
-	public void put(String message) {
+	public void put(String message) throws InterruptedException {
 		synchronized(this) {
+			while(this.message != null) {
+				this.wait();
+			}
 			this.message = message;
-			this.notify();
+			this.notifyAll();
+			
 		}
 	}
 	
@@ -16,6 +20,7 @@ public class MessageBox {
 			}
 			String res = message;
 			message = null;
+			this.notify();
 			return res;
 		}		
 	}
