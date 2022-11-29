@@ -2,11 +2,11 @@ package telran.multithreading.consumer;
 
 import telran.multithreading.MessageBox;
 
-public class Reciever extends Thread {
+public class Receiver extends Thread {
 	private MessageBox messageBox;
-	
-	public Reciever(MessageBox messageBox) {
-		//FIXME - thread should not be a Daemon thread
+
+	public Receiver(MessageBox messageBox) {
+		// FIXME - thread should not be a Daemon one
 		setDaemon(true);
 		this.messageBox = messageBox;
 	}
@@ -18,9 +18,9 @@ public class Reciever extends Thread {
 				String message = messageBox.get();
 				System.out.println(message + getName());
 			} catch (InterruptedException e) {
+
 			}
 		}
 	}
 
-	
 }
