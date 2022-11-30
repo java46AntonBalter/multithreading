@@ -43,6 +43,7 @@ public class MessageBox {
 		try {
 			return message; // possible null
 		} finally {
+			message = null;
 			monitor.unlock();
 		}
 

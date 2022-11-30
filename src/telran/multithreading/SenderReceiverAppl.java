@@ -18,12 +18,10 @@ public class SenderReceiverAppl {
 		Sender sender = new Sender(messageBox, N_MESSAGES);
 		sender.start();
 		sender.join();
-		
-		if (messageBox.take() == null) {
-			IntStream.range(0, N_RECEIVERS).forEach(i -> {
-				receivers[i].interrupt();
-			});
-		};
+
+		IntStream.range(0, N_RECEIVERS).forEach(i -> {
+			receivers[i].interrupt();
+		});
 		System.out.printf("Number of messages processed is: %d", Receiver.getMessagesCounter());
 
 	}
